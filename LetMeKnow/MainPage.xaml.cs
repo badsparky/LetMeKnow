@@ -1,4 +1,7 @@
-﻿namespace LetMeKnow;
+﻿using LetMeKnow.Models;
+
+namespace LetMeKnow;
+
 
 public partial class MainPage : ContentPage
 {
@@ -6,6 +9,7 @@ public partial class MainPage : ContentPage
 
 	public MainPage()
 	{
+		BindingContext = new MainModel();
 		InitializeComponent();
 	}
 
@@ -20,5 +24,14 @@ public partial class MainPage : ContentPage
 		
 		SemanticScreenReader.Announce(CounterBtn.Text);
 	}
+
+    private void MainButton_Clicked(object sender, EventArgs e)
+    {
+
+    }
+    private void MinorButton_Clicked(object sender, EventArgs e)
+    {
+
+    }
 }
 
