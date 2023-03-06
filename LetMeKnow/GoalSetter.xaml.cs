@@ -3,11 +3,11 @@
 namespace LetMeKnow;
 
 
-public partial class MainPage : ContentPage
+public partial class GoalSetter : ContentPage
 {
 	int count = 0;
 
-	public MainPage()
+	public GoalSetter()
 	{
 		BindingContext = new MainModel();
 		InitializeComponent();

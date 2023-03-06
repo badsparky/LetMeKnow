@@ -52,4 +52,19 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="GoalSetter.xaml.cs">
+	    <DependentUpon>GoalSetter.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="MainControler.xaml.cs">
+	    <DependentUpon>MainControler.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="GoalSetter.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>

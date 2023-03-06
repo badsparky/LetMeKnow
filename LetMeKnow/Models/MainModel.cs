@@ -10,7 +10,9 @@ namespace LetMeKnow.Models
     {
         public string Text_Main { get; set; } = "Test";
         public string Text_Minor { get; set; } = "Test";
+        public string TinyGoal { get; set; }= "Test";
         public bool IsActive_Minor { get; set; } = false;
+
 
     }
 }

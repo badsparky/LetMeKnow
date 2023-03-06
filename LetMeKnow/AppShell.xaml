@@ -9,13 +9,12 @@
     <TabBar>
         <ShellContent
             Title="Home"
-            ContentTemplate="{DataTemplate local:MainPage}"
+            ContentTemplate="{DataTemplate local:MainControler}"
             Route="MainPage" />
         <ShellContent
             Title="Home"
-            ContentTemplate="{DataTemplate local:}"
-            Route="MainPage" />
-
+            ContentTemplate="{DataTemplate local:GoalSetter}"
+            Route="GoalSetter" />
     </TabBar>
 
 </Shell>
