@@ -14,18 +14,19 @@
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"
                 HeightRequest="200"
                 HorizontalOptions="Center" />
+            
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Entry Placeholder="What is done"
                        Text="{Binding TinyGoal}"
-                       MaxLength="10"
+                       MaxLength="25"
                        ClearButtonVisibility="WhileEditing"
                        Keyboard="Default"
-                       WidthRequest="300"
+                       WidthRequest="250"
                        />
                 <Button Text="Put"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
-                        WidthRequest="100"
+                        WidthRequest="50"
                         Clicked="PutButton_Clicked"/>
 
             </StackLayout>
