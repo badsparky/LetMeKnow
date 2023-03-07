@@ -20,7 +20,7 @@
                        MaxLength="10"
                        ClearButtonVisibility="WhileEditing"
                        Keyboard="Default"
-                       WidthRequest="350"
+                       WidthRequest="300"
                        />
                 <Button Text="Put"
                         HorizontalOptions="Center"
@@ -39,21 +39,6 @@
                 FontSize="18"
                 HorizontalOptions="Center" />
 
-            <Button
-                x:Name="MainButton"
-                Text="{Binding Text_Main}"
-                SemanticProperties.Hint="Let me know what to do today"
-                Clicked="MainButton_Clicked"
-                HorizontalOptions="Center" />
-            
-            <Button
-                x:Name="MinorButton"
-                BackgroundColor="White"
-                TextColor="{StaticResource Help}"
-                Text="{Binding Text_Minor}"
-                SemanticProperties.Hint="Let me know what to do today"
-                Clicked="MinorButton_Clicked"
-                HorizontalOptions="Center" />
 
         </VerticalStackLayout>
     </ScrollView>

@@ -14,7 +14,19 @@
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"
                 HeightRequest="200"
                 HorizontalOptions="Center" />
-
+            <ListView ItemsSource="{Binding Tasks}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Label
+                                Text="{Binding Goal}"
+                                SemanticProperties.HeadingLevel="Level1"
+                                FontSize="Body"
+                                HorizontalOptions="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
 
             <Label
