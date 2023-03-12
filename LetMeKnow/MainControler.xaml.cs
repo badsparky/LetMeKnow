@@ -1,21 +1,36 @@
-﻿using LetMeKnow.Models;
+﻿using LetMeKnow.DataClass;
+using LetMeKnow.Models;
+using Microsoft.Maui.Graphics;
 
 namespace LetMeKnow;
 
 
 public partial class MainControler : ContentPage
 {
-	int count = 0;
+	public static ControlerModel Model;
+	ToDoControler ToDos;
 
-	public MainControler()
+	public MainControler(ToDoControler ToDos)
 	{
-		BindingContext = new MainModel();
+		this.ToDos = ToDos;
+		DateTime startTime= DateTime.UtcNow;
+		DateTime endTime= DateTime.Now;
+		Model = new ControlerModel(ToDos.GetTodo());
+		BindingContext = Model;
 		InitializeComponent();
 	}
 
-    private void PutButton_Clicked(object sender, EventArgs e)
-    {
+}
+public class GraphicsDrawable:IDrawable
+{
+	ControlerModel Model { get {  return MainControler.Model; } }
+	double Procedure { get { return Model.GetProgress(); } }
 
-    }
+	public void Draw(ICanvas canvas,RectF rect)
+	{
+		canvas.FillColor = Colors.Yellow;
+		canvas.FillRectangle(100, 100, 100, 100);
+
+	}
 }
 

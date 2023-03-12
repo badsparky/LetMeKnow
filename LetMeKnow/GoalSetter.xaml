@@ -9,13 +9,7 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-            
-            <ListView ItemsSource="{Binding Tasks}">
+            <ListView ItemsSource="{Binding Tasks}" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <HorizontalStackLayout>
@@ -25,7 +19,7 @@
                                 FontSize="Body"
                                 HorizontalOptions="Center"/>
                             <Button Command="{Binding Delete}"
-                                    Text="Del"
+                                    Text="Edit"
                                     HorizontalOptions="Center"/>
                         </HorizontalStackLayout>
                     </DataTemplate>
@@ -33,13 +27,19 @@
             </ListView>
             
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <TimePicker Time="{Binding StartTime}"/>
+                <Label Text=" --- " />
+                <TimePicker Time="{Binding EndTime}"/>
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Entry Placeholder="What is done"
-                       Text="{Binding TinyGoal}"
+                       Text="{Binding NewGoal}"
                        MaxLength="25"
                        ClearButtonVisibility="WhileEditing"
                        Keyboard="Default"
-                       WidthRequest="250"
-                       />
+                       WidthRequest="250"/>
+                
                 <Button Text="Put"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"

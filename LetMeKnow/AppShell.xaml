@@ -8,13 +8,11 @@
 
     <TabBar>
         <ShellContent
-            Title="Home"
-            ContentTemplate="{DataTemplate local:MainControler}"
-            Route="MainPage" />
+            Title="Controler"
+            Content="{Binding MainControler}"/>
         <ShellContent
-            Title="Home"
-            ContentTemplate="{DataTemplate local:GoalSetter}"
-            Route="GoalSetter" />
+            Title="Setter"
+            Content="{Binding GoalSetter}" />
     </TabBar>
 
 </Shell>

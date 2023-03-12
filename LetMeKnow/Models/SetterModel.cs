@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LetMeKnow.Models
 {
-    public class MainModel:Base
+    public class SetterModel:Base
     {
         public string Text_Main { get; set; } = "Test";
         public string Text_Minor { get; set; } = "Test";
