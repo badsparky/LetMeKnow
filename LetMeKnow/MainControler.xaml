@@ -1,18 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LetMeKnow.MainControler">
-    <Grid>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+             x:Class="LetMeKnow.MainControler"
+             x:Name="Page">
+    
+    <VerticalStackLayout  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-            <GraphicsView  Drawable="{Binding Path=GraphicsDrawable}"/>
-            <Label Text="{Binding Path=GoalString}"/>
-            <Label Text="{Binding Path=LeftTime}"/>
+        <GraphicsView  Drawable="{Binding Path=GraphicsDrawable}"   HeightRequest="{Binding Height}" WidthRequest="{Binding Width}" BackgroundColor="{StaticResource White}"/>
+        <!--<Label Text="{Binding Height}" BindingContext="{x:Reference Page}" />
+        <Label Text="{Binding Path=LeftTime}"/>-->
 
-        </VerticalStackLayout>
-    </Grid>
+    </VerticalStackLayout>
 
 </ContentPage>

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LetMeKnow.DataClass;
+﻿using LetMeKnow.DataClass;
+using LetMeKnow.Graphics;
+using System.Diagnostics;
+using System.Threading.Tasks.Dataflow;
 
 namespace LetMeKnow.Models
 {
@@ -16,11 +13,15 @@ namespace LetMeKnow.Models
         public GraphicsDrawable GraphicsDrawable { get; private set; }
         public double Span { get {  return ToDo.Span; } }
         public double LeftTime { get { return ToDo.LeftTime; } }
+        public double Height { get { return 10000; } }
+        public double Width { get { return 10000; } }
+        Shell Shell;
         ToDo ToDo;
 
-        public ControlerModel(ToDo toDo) 
+        public ControlerModel(ToDo toDo,Shell shell) 
         { 
             SetToDo(toDo);
+            this.Shell = shell;
         }
 
 
@@ -36,20 +37,5 @@ namespace LetMeKnow.Models
         }
     }
 
-    public class GraphicsDrawable : IDrawable
-    {
-        ToDo ToDo;
-        double Procedure { get { return Math.Min(1, ToDo.LeftTime / ToDo.Span); } }
 
-        public GraphicsDrawable(ToDo todo)
-        {
-            ToDo= todo;
-        }
-
-        public void Draw(ICanvas canvas, RectF rect)
-        {
-            canvas.FillColor = Colors.Yellow;
-            canvas.FillRectangle(100, 100, 100, 100);
-        }
-    }
 }
