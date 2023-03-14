@@ -14,7 +14,7 @@ namespace LetMeKnow.DataClass
         public double Span { get { return Math.Sqrt(Start.Subtract(End).TotalMilliseconds); } }
         public double LeftTime { get { return Math.Max((End - DateTime.Now).Microseconds, 0); } }
         public ToDo(DateTime start, DateTime end, string todo) { this.Start = start; this.End = end; this.Thing = todo; }
-        public bool isDone { get { return (End - DateTime.Now).Milliseconds > 0; } }
+        public bool isDone { get { return (End - DateTime.Now).Milliseconds < 0; } }
 
         int IComparable<ToDo>.CompareTo(ToDo todo)
         {

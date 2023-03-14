@@ -10,17 +10,16 @@ namespace LetMeKnow.Models
 {
     public class ControlerModel:Base
     {
-        public string RecetGoal { get; set; } = "Test";
         public string StartTime { get { return ToDo.Start.ToString("HH:mm"); } }
         public string EndTime { get { return ToDo.End.ToString("HH:mm"); } }
         public string GoalString { get { return ToDo.Thing; } }
         public GraphicsDrawable GraphicsDrawable { get; private set; }
-        double Span { get {  return ToDo.Span; } }
+        public double Span { get {  return ToDo.Span; } }
+        public double LeftTime { get { return ToDo.LeftTime; } }
         ToDo ToDo;
 
         public ControlerModel(ToDo toDo) 
         { 
-            ToDo = toDo;
             SetToDo(toDo);
         }
 
@@ -28,24 +27,30 @@ namespace LetMeKnow.Models
         public void SetToDo(ToDo toDo)
         {
             ToDo=toDo;
+            GraphicsDrawable= new GraphicsDrawable(toDo);
+            //OnPropertyChanged(nameof(GraphicsDrawable));
         }
 
         public double GetProgress()
         {
-            return Span;
+            return  Math.Min(1,LeftTime/Span);
         }
     }
 
-    public class TinyGoal
+    public class GraphicsDrawable : IDrawable
     {
-        public string CompletedThing { get; set; }
-        public string Time { get { return DateTime.ToString("HH:mm"); } }
-        readonly DateTime DateTime;
-        public TinyGoal(string Thing)
+        ToDo ToDo;
+        double Procedure { get { return Math.Min(1, ToDo.LeftTime / ToDo.Span); } }
+
+        public GraphicsDrawable(ToDo todo)
         {
-            this.DateTime = DateTime.Now;
-            CompletedThing = Thing;
+            ToDo= todo;
+        }
+
+        public void Draw(ICanvas canvas, RectF rect)
+        {
+            canvas.FillColor = Colors.Yellow;
+            canvas.DrawRectangle(100, 100, 100, 100);
         }
     }
-
 }

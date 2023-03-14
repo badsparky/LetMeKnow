@@ -19,18 +19,6 @@ public partial class MainControler : ContentPage
 		BindingContext = Model;
 		InitializeComponent();
 	}
-
 }
-public class GraphicsDrawable:IDrawable
-{
-	ControlerModel Model { get {  return MainControler.Model; } }
-	double Procedure { get { return Model.GetProgress(); } }
 
-	public void Draw(ICanvas canvas,RectF rect)
-	{
-		canvas.FillColor = Colors.Yellow;
-		canvas.FillRectangle(100, 100, 100, 100);
-
-	}
-}
 

@@ -1,5 +1,4 @@
-﻿using UIKit;
-using LetMeKnow.DataClass;
+﻿using LetMeKnow.DataClass;
 
 namespace LetMeKnow;
 

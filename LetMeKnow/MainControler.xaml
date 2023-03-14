@@ -8,68 +8,9 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-            <GraphicsView  Drawable="{Binding drawable}"  />
-            <!--<ScrollView HeightRequest="400" HorizontalOptions="Center" >
-
-                <ListView ItemsSource="{Binding Path=TinyGoals}"  Background="Transparent" HorizontalOptions="Center" WidthRequest="300" SelectionMode="None" >
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-
-                            <ViewCell>
-                                <Grid VerticalOptions="End">
-                                    <HorizontalStackLayout>
-                                        <Rectangle />
-                                        <Label Text="{Binding Path=CompletedThing}"
-                                                FontSize="Body" 
-                                                VerticalTextAlignment="End"
-                                                HorizontalTextAlignment="Center"
-                                                WidthRequest="250"
-                                                TextColor="{StaticResource Primary}"
-                                                BackgroundColor="Transparent"
-                                                />
-
-                                        <Label Text="{Binding Path=Time}"
-                                                FontSize="Body" 
-                                                VerticalTextAlignment="End"
-                                                HorizontalTextAlignment="Center"
-                                                WidthRequest="50"
-                                                TextColor="{StaticResource Gray300}"
-                                                BackgroundColor="Transparent"
-                                                />
-                                    </HorizontalStackLayout>
-
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </ScrollView>
-
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <Entry x:Name="TinyThing"
-                        Placeholder="What is done"
-                        Text=""
-                        MaxLength="25"
-                        ClearButtonVisibility="WhileEditing"
-                        Keyboard="Default"
-                        WidthRequest="250"
-                        />
-                <Button Text="Put"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        WidthRequest="50"
-                        Clicked="PutButton_Clicked"/>
-
-            </StackLayout>
-
-
-            <Label
-                Text="{Binding Path= RecetGoal}"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />-->
-
+            <GraphicsView  Drawable="{Binding Path=GraphicsDrawable}"/>
+            <Label Text="{Binding Path=GoalString}"/>
+            <Label Text="{Binding Path=LeftTime}"/>
 
         </VerticalStackLayout>
     </Grid>

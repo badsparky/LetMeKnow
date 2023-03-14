@@ -9,7 +9,7 @@ namespace LetMeKnow.DataClass
 {
     public class ToDoControler
     {
-        List<ToDo> _ToDos { get; set; }
+        List<ToDo> _ToDos { get; set; } = new List<ToDo>();
         public List<ToDo> ToDos
         {
             get
@@ -26,8 +26,8 @@ namespace LetMeKnow.DataClass
 
         public void AddToDo(DateTime start, DateTime end, string todo)
         {
-            ToDos.Add(new ToDo(start, end, todo));
-            ToDos.Sort();
+            _ToDos.Add(new ToDo(start, end, todo));
+            _ToDos.Sort();
         }
     }
 }
