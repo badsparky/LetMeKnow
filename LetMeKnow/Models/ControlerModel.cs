@@ -28,7 +28,6 @@ namespace LetMeKnow.Models
         {
             ToDo=toDo;
             GraphicsDrawable= new GraphicsDrawable(toDo);
-            //OnPropertyChanged(nameof(GraphicsDrawable));
         }
 
         public double GetProgress()
@@ -50,7 +49,7 @@ namespace LetMeKnow.Models
         public void Draw(ICanvas canvas, RectF rect)
         {
             canvas.FillColor = Colors.Yellow;
-            canvas.DrawRectangle(100, 100, 100, 100);
+            canvas.FillRectangle(100, 100, 100, 100);
         }
     }
 }
