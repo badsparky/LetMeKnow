@@ -15,7 +15,7 @@ namespace LetMeKnow.DataClass
             get
             {
                 if(_ToDos.Count == 0)
-                    return new List<ToDo> { new ToDo(DateTime.Now,DateTime.Now.AddHours(2),"Nothing")};
+                    return new List<ToDo> { new ToDo(DateTime.Now,DateTime.Now.AddMinutes(10),"Nothing")};
                 else
                     return _ToDos;
             }

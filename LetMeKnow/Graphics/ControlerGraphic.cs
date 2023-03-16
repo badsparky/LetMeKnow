@@ -16,8 +16,15 @@ namespace LetMeKnow.Graphics
 
         public void Draw(ICanvas canvas, RectF rect)
         {
+            var height=rect.Height;
+            var width=rect.Width;
+            var half = Math.Min(height, width) / 2;
+            var startPoint = half / 2;
+
             canvas.FillColor = Colors.Yellow;
-            canvas.FillRectangle(0, 0, rect.Width, rect.Height);
+            canvas.DrawRectangle(0, 0, width, height);
+            canvas.DrawEllipse(startPoint, startPoint, half, half);
+            canvas.FillEllipse(startPoint, startPoint, (float)(half* Procedure), (float)(half * Procedure));
         }
     }
 }

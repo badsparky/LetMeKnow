@@ -13,8 +13,8 @@ namespace LetMeKnow.Models
         public GraphicsDrawable GraphicsDrawable { get; private set; }
         public double Span { get {  return ToDo.Span; } }
         public double LeftTime { get { return ToDo.LeftTime; } }
-        public double Height { get { return 10000; } }
-        public double Width { get { return 10000; } }
+        public double Height { get { return 500; } }
+        public double Width { get { return 500; } }
         Shell Shell;
         ToDo ToDo;
 
