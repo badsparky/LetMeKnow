@@ -17,8 +17,14 @@ public partial class MainControler : ContentPage
         Model = new ControlerModel(ToDos.GetTodo(), shell);
         BindingContext = Model;
         InitializeComponent();
-
-        Loaded+=
+        
+        Loaded+= (s, e) =>
+        {
+            while (true)
+            {
+                GraphicsView.Invalidate();
+            }
+        };
     }
 }
 
