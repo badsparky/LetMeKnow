@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Timers;
 
-namespace LetMeKnow.DataClass
+namespace LetMeKnow.TodoClass
 {
     public class ToDoControler
     {
         List<ToDo> _ToDos { get; set; } = new List<ToDo>();
+        System.Timers.Timer _Timer;
+        public delegate 
         public List<ToDo> ToDos
         {
             get
@@ -21,7 +23,12 @@ namespace LetMeKnow.DataClass
             }
         }
 
-        public ToDoControler() { }
+        public ToDoControler(ContentPage pahe) 
+        {
+            _Timer = new System.Timers.Timer(100);
+            Handler = _Timer.Interval;
+            
+        }
         public ToDo GetTodo(){ return ToDos.First(x => !x.isDone);}
 
         public void AddToDo(DateTime start, DateTime end, string todo)
@@ -31,13 +38,8 @@ namespace LetMeKnow.DataClass
         }
         public class Watcher
         {
-            public delegate void WatchHandler(object sender, EventArgs e);
             public event WatchHandler WatchEvent;
-
-            public void OnReflesh()
-            {
-                WatchEvent?.Invoke(this, new EventArgs());
-            }
+            public delegate void WatchHandler(object sender, EventArgs e);
         }
     }
 
