@@ -29,5 +29,17 @@ namespace LetMeKnow.DataClass
             _ToDos.Add(new ToDo(start, end, todo));
             _ToDos.Sort();
         }
+        public class Watcher
+        {
+            public delegate void WatchHandler(object sender, EventArgs e);
+            public event WatchHandler WatchEvent;
+
+            public void OnReflesh()
+            {
+                WatchEvent?.Invoke(this, new EventArgs());
+            }
+        }
     }
+
+
 }
