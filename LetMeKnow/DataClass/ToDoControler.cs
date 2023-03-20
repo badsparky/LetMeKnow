@@ -9,9 +9,12 @@ namespace LetMeKnow.TodoClass
 {
     public class ToDoControler
     {
+        public delegate void ToDoControlerEventHandler(object sender, EventArgs e);
+        public event ToDoControlerEventHandler ControlerEvent;
+
+        System.Timers.Timer Timer;
         List<ToDo> _ToDos { get; set; } = new List<ToDo>();
-        System.Timers.Timer _Timer;
-        public delegate 
+        ContentPage Page;
         public List<ToDo> ToDos
         {
             get
@@ -23,23 +26,20 @@ namespace LetMeKnow.TodoClass
             }
         }
 
-        public ToDoControler(ContentPage pahe) 
+        public ToDoControler(AppShell shell) 
         {
-            _Timer = new System.Timers.Timer(100);
-            Handler = _Timer.Interval;
-            
+            Timer = new System.Timers.Timer(100);
+            Timer.Start();
+            Timer.Elapsed += this.ControlerEvent.Invoke;
+            shell.Unloaded += (object sender, EventArgs e) => {Timer.Stop(); Timer.Dispose(); };
         }
+
         public ToDo GetTodo(){ return ToDos.First(x => !x.isDone);}
 
         public void AddToDo(DateTime start, DateTime end, string todo)
         {
             _ToDos.Add(new ToDo(start, end, todo));
             _ToDos.Sort();
-        }
-        public class Watcher
-        {
-            public event WatchHandler WatchEvent;
-            public delegate void WatchHandler(object sender, EventArgs e);
         }
     }
 

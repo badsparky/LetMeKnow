@@ -18,6 +18,7 @@ public partial class MainControler : ContentPage
         Model = new ControlerModel(ToDos.GetTodo(), shell);
         BindingContext = Model;
         InitializeComponent();
+        ToDos.ControlerEvent +=(object sender,EventArgs e)=> { GraphicsView.Invalidate(); };
     }
 
 
