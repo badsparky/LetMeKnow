@@ -11,8 +11,15 @@ namespace LetMeKnow.TodoClass
         public DateTime Start;
         public DateTime End;
         public string Thing;
-        public double Span { get { return Math.Sqrt(Start.Subtract(End).TotalMilliseconds); } }
-        public double LeftTime { get { return Math.Max((End - DateTime.Now).Microseconds, 0); } }
+        public double Span { 
+            get
+            {
+                var tmp = (Start.Subtract(End));
+                var tmp2 = tmp.TotalMilliseconds;
+                return Math.Abs((Start.Subtract(End)).TotalMilliseconds);
+            }
+        }
+        public double LeftTime { get { return Math.Max((End - DateTime.Now).TotalMilliseconds, 0); } }
         public ToDo(DateTime start, DateTime end, string todo) { this.Start = start; this.End = end; this.Thing = todo; }
         public bool isDone { get { return (End - DateTime.Now).Milliseconds < 0; } }
 

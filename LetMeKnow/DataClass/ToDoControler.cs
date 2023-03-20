@@ -30,9 +30,11 @@ namespace LetMeKnow.TodoClass
         {
             Timer = new System.Timers.Timer(100);
             Timer.Start();
-            Timer.Elapsed += this.ControlerEvent.Invoke;
+            Timer.Elapsed += ExecuteDelegate;
             shell.Unloaded += (object sender, EventArgs e) => {Timer.Stop(); Timer.Dispose(); };
         }
+
+        void ExecuteDelegate(object sender, EventArgs e) {if (ControlerEvent != null) { ControlerEvent(sender, e);} }
 
         public ToDo GetTodo(){ return ToDos.First(x => !x.isDone);}
 
@@ -42,6 +44,4 @@ namespace LetMeKnow.TodoClass
             _ToDos.Sort();
         }
     }
-
-
 }

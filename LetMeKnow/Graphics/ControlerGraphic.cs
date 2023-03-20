@@ -24,7 +24,9 @@ namespace LetMeKnow.Graphics
             canvas.FillColor = Colors.Yellow;
             canvas.DrawRectangle(0, 0, width, height);
             canvas.DrawEllipse(startPoint, startPoint, half, half);
-            canvas.FillEllipse(startPoint, startPoint, (float)(half* Procedure), (float)(half * Procedure));
+
+            var NewHalf = (float)(half * Procedure);
+            canvas.FillEllipse((float)(width / 2 - NewHalf), (float)(height/2-NewHalf), NewHalf, NewHalf);
         }
     }
 }
