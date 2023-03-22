@@ -28,7 +28,7 @@ namespace LetMeKnow.TodoClass
 
         public ToDoControler(AppShell shell) 
         {
-            Timer = new System.Timers.Timer(100);
+            Timer = new System.Timers.Timer(200);
             Timer.Start();
             Timer.Elapsed += ExecuteDelegate;
             shell.Unloaded += (object sender, EventArgs e) => {Timer.Stop(); Timer.Dispose(); };
@@ -40,6 +40,7 @@ namespace LetMeKnow.TodoClass
 
         public void AddToDo(DateTime start, DateTime end, string todo)
         {
+            if ((end - start).TotalMilliseconds < 0 || (end - DateTime.Now).TotalMilliseconds < 0) throw new Exception("Time Not Valid");
             _ToDos.Add(new ToDo(start, end, todo));
             _ToDos.Sort();
         }

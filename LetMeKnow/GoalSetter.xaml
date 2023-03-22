@@ -26,14 +26,14 @@
                 </ListView.ItemTemplate>
             </ListView>
             
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                 <TimePicker Time="{Binding StartTime}"/>
-                <Label Text=" --- " />
+                <Label Text=" --- "/>
                 <TimePicker Time="{Binding EndTime}"/>
             </StackLayout>
             
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <Entry Placeholder="What is done"
+                <Entry Placeholder="What is your plan ?"
                        Text="{Binding NewGoal}"
                        MaxLength="25"
                        ClearButtonVisibility="WhileEditing"
@@ -47,15 +47,6 @@
                         Clicked="PutButton_Clicked"/>
 
             </StackLayout>
-
-
-            
-            <!--<Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />-->
 
 
         </VerticalStackLayout>

@@ -12,7 +12,7 @@ public partial class AppShell : Shell
     public AppShell()
 	{
 		Todos = new ToDoControler(this);
-		GoalSetter = new GoalSetter();
+		GoalSetter = new GoalSetter(Todos);
 		MainControler = new MainControler(Todos, this);
 		BindingContext = this;
 		InitializeComponent();

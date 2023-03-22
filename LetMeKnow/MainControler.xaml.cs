@@ -19,9 +19,11 @@ public partial class MainControler : ContentPage
         BindingContext = Model;
         InitializeComponent();
         ToDos.ControlerEvent += RenderGraphics;
+        ToDos.ControlerEvent += CheckTime;
     }
 
     void RenderGraphics(object sender,EventArgs e){ if (GraphicsView.IsEnabled) GraphicsView.Invalidate(); }
+    void CheckTime(object sender,EventArgs e) { Model.SetToDo(ToDos.GetTodo()); }
 
 }
 
