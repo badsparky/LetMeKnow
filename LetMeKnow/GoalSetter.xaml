@@ -37,9 +37,9 @@
             </ListView>
             
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <TimePicker Time="{Binding StartTime}"/>
+                <TimePicker Time="{Binding Start}"/>
                 <Label Text=" --- "/>
-                <TimePicker Time="{Binding EndTime}"/>
+                <TimePicker Time="{Binding End}"/>
             </StackLayout>
             
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">

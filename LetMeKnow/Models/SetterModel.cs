@@ -12,8 +12,8 @@ namespace LetMeKnow.Models
     {
         ToDoControler ToDos;
         public string NewGoal { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
         public ObservableCollection<string> Goals { get; set; }
 
         public SetterModel(ToDoControler toDoControler)
@@ -26,7 +26,7 @@ namespace LetMeKnow.Models
         {
             try
             {
-                var todo = new ToDo(StartTime, EndTime, NewGoal);
+                var todo = new ToDo(Start, End, NewGoal);
                 ToDos.AddToDo(todo);
                 Goals.Add(NewGoal);
                 return true;
