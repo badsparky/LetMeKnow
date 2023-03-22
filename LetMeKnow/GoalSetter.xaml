@@ -9,12 +9,22 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-            <ListView ItemsSource="{Binding Tasks}" HasUnevenRows="True">
+            <ListView ItemsSource="{Binding Goals}" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <HorizontalStackLayout>
                             <Label
-                                Text="{Binding Goal}"
+                                Text="{Binding Start}"
+                                SemanticProperties.HeadingLevel="Level1"
+                                FontSize="Body"
+                                HorizontalOptions="Center"/>
+                            <Label
+                                Text="{Binding End}"
+                                SemanticProperties.HeadingLevel="Level1"
+                                FontSize="Body"
+                                HorizontalOptions="Center"/>
+                            <Label
+                                Text="{Binding Text}"
                                 SemanticProperties.HeadingLevel="Level1"
                                 FontSize="Body"
                                 HorizontalOptions="Center"/>

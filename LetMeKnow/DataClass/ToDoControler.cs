@@ -38,10 +38,9 @@ namespace LetMeKnow.TodoClass
 
         public ToDo GetTodo(){ return ToDos.First(x => !x.isDone);}
 
-        public void AddToDo(DateTime start, DateTime end, string todo)
+        public void AddToDo(ToDo toDo)
         {
-            if ((end - start).TotalMilliseconds < 0 || (end - DateTime.Now).TotalMilliseconds < 0) throw new Exception("Time Not Valid");
-            _ToDos.Add(new ToDo(start, end, todo));
+            _ToDos.Add(toDo);
             _ToDos.Sort();
         }
     }

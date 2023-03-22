@@ -19,13 +19,15 @@ namespace LetMeKnow.Models
         public SetterModel(ToDoControler toDoControler)
         {
             ToDos = toDoControler;
+            Goals=new ObservableCollection<string>();
         }
 
         public bool AddTodo()
         {
             try
             {
-                ToDos.AddToDo(StartTime, EndTime,NewGoal);
+                var todo = new ToDo(StartTime, EndTime, NewGoal);
+                ToDos.AddToDo(todo);
                 Goals.Add(NewGoal);
                 return true;
             }

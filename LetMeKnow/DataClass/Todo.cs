@@ -20,7 +20,11 @@ namespace LetMeKnow.TodoClass
             }
         }
         public double LeftTime { get { return Math.Max((End - DateTime.Now).TotalMilliseconds, 0); } }
-        public ToDo(DateTime start, DateTime end, string todo) { this.Start = start; this.End = end; this.Thing = todo; }
+        public ToDo(DateTime start, DateTime end, string todo) 
+        {
+            if(end.Subtract(start).TotalMilliseconds< 0) {  }
+            this.Start = start; this.End = end; this.Thing = todo; 
+        }
         public bool isDone { get { return (End - DateTime.Now).Milliseconds < 0; } }
 
         int IComparable<ToDo>.CompareTo(ToDo todo)
