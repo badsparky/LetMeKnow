@@ -15,15 +15,15 @@ public partial class MainControler : ContentPage
         this.ToDos = ToDos;
         DateTime startTime = DateTime.UtcNow;
         DateTime endTime = DateTime.Now;
-        Model = new ControlerModel(ToDos.GetTodo(), shell);
+        Model = new ControlerModel(ToDos, shell);
         BindingContext = Model;
         InitializeComponent();
         ToDos.ControlerEvent += RenderGraphics;
-        ToDos.ControlerEvent += CheckTime;
+        Model.ToDoChnaged += ChnageTexts;
     }
 
     void RenderGraphics(object sender,EventArgs e){ if (GraphicsView.IsEnabled) GraphicsView.Invalidate(); }
-    void CheckTime(object sender,EventArgs e) { Model.SetToDo(ToDos.GetTodo()); }
+    void ChnageTexts(ToDo toDo) { Goal.Text = toDo.Thing; }
 
 }
 

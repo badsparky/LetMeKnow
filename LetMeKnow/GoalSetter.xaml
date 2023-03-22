@@ -9,39 +9,39 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-            <ListView ItemsSource="{Binding Goals}" HasUnevenRows="True">
+            <ListView ItemsSource="{Binding Goals}" HasUnevenRows="True" HorizontalOptions="Center" HeightRequest="300">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <HorizontalStackLayout>
-                            <Label
-                                Text="{Binding Start}"
-                                SemanticProperties.HeadingLevel="Level1"
-                                FontSize="Body"
-                                HorizontalOptions="Center"/>
-                            <Label
-                                Text="{Binding End}"
-                                SemanticProperties.HeadingLevel="Level1"
-                                FontSize="Body"
-                                HorizontalOptions="Center"/>
-                            <Label
-                                Text="{Binding Text}"
-                                SemanticProperties.HeadingLevel="Level1"
-                                FontSize="Body"
-                                HorizontalOptions="Center"/>
-                            <Button Command="{Binding Delete}"
-                                    Text="Edit"
-                                    HorizontalOptions="Center"/>
-                        </HorizontalStackLayout>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding Start2End}"
+                                       SemanticProperties.HeadingLevel="Level1"
+                                       HorizontalTextAlignment="End"
+                                       Grid.Column="0"
+                                       FontSize="Body"/>
+                                
+                                <Label Text="{Binding Goal}"
+                                       SemanticProperties.HeadingLevel="Level1"
+                                       HorizontalTextAlignment="Start"
+                                       Grid.Column="1"
+                                       FontSize="Body"/>
+                            </Grid>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            
+
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <TimePicker Time="{Binding Start}"/>
+                <TimePicker Time="{Binding Start}" VerticalOptions="Center"/>
                 <Label Text=" --- "/>
-                <TimePicker Time="{Binding End}"/>
+                <TimePicker Time="{Binding End}" VerticalOptions="Center"/>
             </StackLayout>
-            
+
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Entry Placeholder="What is your plan ?"
                        Text="{Binding NewGoal}"
@@ -49,7 +49,7 @@
                        ClearButtonVisibility="WhileEditing"
                        Keyboard="Default"
                        WidthRequest="250"/>
-                
+
                 <Button Text="Put"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"

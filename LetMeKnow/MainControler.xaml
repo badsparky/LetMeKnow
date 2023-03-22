@@ -7,7 +7,7 @@
     <VerticalStackLayout  HorizontalOptions="Center" VerticalOptions="Center">
 
         <GraphicsView x:Name="GraphicsView"  Drawable="{Binding Path=GraphicsDrawable}"   HeightRequest="{Binding Height}" WidthRequest="{Binding Width}" BackgroundColor="{StaticResource Primary}"/>
-        <Label Text="{Binding Path=GoalString}" FontSize="Large" HorizontalTextAlignment="Center" TextColor="{StaticResource Gray300}"/>
+        <Label x:Name="Goal" Text="{Binding Path=GoalString,Mode=TwoWay}" FontSize="Large" HorizontalTextAlignment="Center" TextColor="{StaticResource Gray300}"/>
         <!--<Label Text="{Binding Path=LeftTime}"/>-->
 
     </VerticalStackLayout>

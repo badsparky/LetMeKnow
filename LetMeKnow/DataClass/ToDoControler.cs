@@ -14,19 +14,11 @@ namespace LetMeKnow.TodoClass
         public delegate void ToDoControlerEventHandler(object sender, EventArgs e);
         public event ToDoControlerEventHandler ControlerEvent;
 
+
         System.Timers.Timer Timer;
-        List<ToDo> _ToDos { get; set; } = new List<ToDo>();
-        ContentPage Page;
-        public ObservableCollection<ToDo> ToDos
-        {
-            get
-            {
-                if(_ToDos.Count == 0)
-                    return new ObservableCollection<ToDo> { new ToDo(DateTime.Now,DateTime.Now.AddMinutes(10),"Nothing")};
-                else
-                    return new ObservableCollection<ToDo>(Sort());
-            }
-        }
+        List<ToDo> _ToDos = new List<ToDo>();
+
+        public List<ToDo> ToDos {get{return _ToDos;}}
 
         public ToDoControler(AppShell shell) 
         {
@@ -38,17 +30,12 @@ namespace LetMeKnow.TodoClass
 
         void ExecuteDelegate(object sender, EventArgs e) {if (ControlerEvent != null) { ControlerEvent(sender, e);} }
 
-        public ToDo GetTodo(){ return ToDos.First(x => !x.isDone);}
+        public ToDo GetTodo(){ return ToDos.FirstOrDefault(x => !x.isDone)?? new ToDo(DateTime.Now, DateTime.Now.AddSeconds(2), "Nothing For Now"); }
 
         public void AddToDo(ToDo toDo)
         {
             _ToDos.Add(toDo);
             _ToDos.Sort();
-        }
-        IEnumerable<ToDo> Sort()
-        {
-            _ToDos.Sort();
-            return _ToDos.ToImmutableList();
         }
     }
 }

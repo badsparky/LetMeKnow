@@ -12,23 +12,26 @@ namespace LetMeKnow.Models
     {
         ToDoControler ToDos;
         public string NewGoal { get; set; }
-        public DateTime Start { get; set; }
-        public DateTime End { get; set; }
-        public ObservableCollection<string> Goals { get; set; }
+        public TimeSpan Start { get; set; }=DateTime.Now.TimeOfDay;
+        public TimeSpan End { get; set; } = DateTime.Now.TimeOfDay;
+        public ObservableCollection<ToDo.Viewing> Goals { get; set; }
 
         public SetterModel(ToDoControler toDoControler)
         {
             ToDos = toDoControler;
-            Goals=new ObservableCollection<string>();
+            Goals=new ObservableCollection<ToDo.Viewing>(ToDos.ToDos.Select(x=>new ToDo.Viewing(x)));
         }
 
         public bool AddTodo()
         {
             try
             {
-                var todo = new ToDo(Start, End, NewGoal);
+                var startDate=DateTime.Today.Add(Start);
+                var endDate=DateTime.Today.Add(End);
+                if(startDate>endDate) endDate= endDate.AddDays(1);
+                var todo = new ToDo(startDate,endDate, NewGoal);
                 ToDos.AddToDo(todo);
-                Goals.Add(NewGoal);
+                Goals.Add(new ToDo.Viewing(todo));
                 return true;
             }
             catch { return false;}

@@ -8,7 +8,7 @@ namespace LetMeKnow.TodoClass
 {
     public class ToDo :IComparable<ToDo>
     {
-        public DateTime Start;
+        public DateTime Start ;
         public DateTime End;
         public string Thing;
         public double Span { 
@@ -31,5 +31,14 @@ namespace LetMeKnow.TodoClass
         {
             return Math.Sign((this.Start - todo.Start).Microseconds);
         }
+
+        public class Viewing
+        {
+            ToDo ToDo;
+            public string Start2End { get { return $"{ToDo.Start.ToString("HH:mm")} - {ToDo.End.ToString($"HH:mm")}\t({(ToDo.End-ToDo.Start).TotalMilliseconds})\t"; } }
+            public string Goal { get { return "\t"+ToDo.Thing; } }
+            public Viewing(ToDo toDo) { this.ToDo = toDo; }
+        }
+        
     }
 }

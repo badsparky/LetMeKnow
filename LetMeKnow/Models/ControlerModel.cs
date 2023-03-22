@@ -7,29 +7,32 @@ namespace LetMeKnow.Models
 {
     public class ControlerModel:Base
     {
-        public string StartTime { get { return ToDo.Start.ToString("HH:mm"); } }
-        public string EndTime { get { return ToDo.End.ToString("HH:mm"); } }
-        public string GoalString { get { return ToDo.Thing; } }
+        public string StartTime { get=> ToDo.Start.ToString("HH:mm");  }
+        public string EndTime { get =>ToDo.End.ToString("HH:mm");  }
+        public string GoalString { get => ToDo.Thing; }
         public GraphicsDrawable GraphicsDrawable { get; private set; }
-        public double Span { get {  return ToDo.Span; } }
-        public double LeftTime { get { return ToDo.LeftTime; } }
-        public double Height { get { return 500; } }
-        public double Width { get { return 500; } }
+        public double Span { get => ToDo.Span;  }
+        public double LeftTime { get => ToDo.LeftTime; }
+        public double Height { get => 500; }
+        public double Width { get => 500; }
+
+        public delegate void ToDoChnagedHandler(ToDo todo);
+        public event ToDoChnagedHandler ToDoChnaged;
+
+        ToDoControler ToDos;
         Shell Shell;
         ToDo ToDo;
 
-        public ControlerModel(ToDo toDo,Shell shell) 
+        public ControlerModel(ToDoControler toDoControler,Shell shell) 
         { 
-            SetToDo(toDo);
+            ToDos = toDoControler;
+            ToDo= ToDos.GetTodo();
+            GraphicsDrawable=new GraphicsDrawable(toDoControler);
+            GraphicsDrawable.ToDoChnaged += SetToDo;
             this.Shell = shell;
         }
 
-
-        public void SetToDo(ToDo toDo)
-        {
-            ToDo=toDo;
-            GraphicsDrawable= new GraphicsDrawable(toDo);
-        }
+        void SetToDo(ToDo toDo){ToDo=toDo; ToDoChnaged?.Invoke(this.ToDo); }
 
         public double GetProgress()
         {
