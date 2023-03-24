@@ -12,7 +12,6 @@ namespace LetMeKnow.Models
         public double Height { get => 500; }
         public double Width { get => 500; }
         public  string LeftMinuetsAndHours { get => ToDo.LeftMinuetsAndHours; }
-
         public ToDo CurrentToDo { get => ToDo; }
         double LeftTime { get => ToDo.LeftTimeMillisecond; }
         double Span { get => ToDo.Span;  }
@@ -23,7 +22,6 @@ namespace LetMeKnow.Models
 
 
         ToDoControler ToDos;
-        Shell Shell;
         ToDo ToDo;
 
         public ControlerModel(ToDoControler toDoControler,Shell shell) 
@@ -32,12 +30,16 @@ namespace LetMeKnow.Models
             ToDo= ToDos.GetTodo();
             GraphicsDrawable=new GraphicsDrawable(toDoControler);
             GraphicsDrawable.ToDoChnaged += SetToDo;
-            this.Shell = shell;
+            ToDos.ControlerEvent += UpdateProperty;
         }
 
-        void SetToDo(ToDo toDo){ToDo=toDo; ToDoChnaged?.Invoke(this.ToDo); }
+        void SetToDo(ToDo toDo){ UpdateProperty(toDo); ToDo=toDo; ToDoChnaged?.Invoke(this.ToDo); }
 
-
+        void UpdateProperty(ToDo todo)
+        {
+            OnPropertyChanged("LeftMinuetsAndHours");
+            OnPropertyChanged("GoalString");
+        }
 
         public double GetProgress()
         {

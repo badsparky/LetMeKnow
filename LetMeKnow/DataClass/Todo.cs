@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LetMeKnow.TodoClass
 {
-    public class ToDo 
+    public class ToDo :IComparable<ToDo>
     {
         public DateTime Start ;
         public DateTime End;
@@ -18,9 +18,9 @@ namespace LetMeKnow.TodoClass
             }
         }
         public double LeftTimeMillisecond { get { return Math.Max((End - DateTime.Now).TotalMilliseconds, 0); } }
-        double LeftTimeMinutes { get { return LeftTimeMillisecond/1000; } }
-        //public string LeftMinuetsAndHours { get => $"{Math.Floor(LeftTimeMinutes / 60).ToString("00")}h\t{Math.Floor(LeftTimeMinutes % 60).ToString("00")}m\t{Math.Floor(60 * (LeftTimeMinutes % 1)).ToString("00")}s"; }
-        public string LeftMinuetsAndHours { get => $"Checking {DateTime.Now}"; }
+        double LeftTimeMinutes { get { return LeftTimeMillisecond/1000/60
+                    ; } }
+        public string LeftMinuetsAndHours { get => $"{Math.Floor(LeftTimeMinutes / 60):00}h{Math.Floor(LeftTimeMinutes % 60):00}m{Math.Floor(60 * (LeftTimeMinutes % 1)):00}s"; }
         public ToDo(DateTime start, DateTime end, string todo) 
         {
             if(end.Subtract(start).TotalMilliseconds< 0) {  }
@@ -28,10 +28,10 @@ namespace LetMeKnow.TodoClass
         }
         public bool isDone { get { return (End - DateTime.Now).Milliseconds < 0; } }
 
-        //int IComparable<ToDo>.CompareTo(ToDo todo)
-        //{
-        //    return Math.Sign((this.Start - todo.Start).Microseconds);
-        //}
+        int IComparable<ToDo>.CompareTo(ToDo todo)
+        {
+            return Math.Sign((this.Start - todo.Start).Microseconds);
+        }
 
         public class Viewing
         {

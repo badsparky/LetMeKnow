@@ -7,8 +7,8 @@
     <VerticalStackLayout  HorizontalOptions="Center" VerticalOptions="Center">
         <GraphicsView x:Name="GraphicsView"  Drawable="{Binding Path=GraphicsDrawable}"   HeightRequest="{Binding Height}" WidthRequest="{Binding Width}" BackgroundColor="{StaticResource Primary}"/>
         <Grid>
-            <Label x:Name="Goal" Text="{Binding Path=GoalString,Mode=TwoWay}" FontSize="Large" HorizontalTextAlignment="Center" TextColor="{StaticResource Gray300}" ZIndex="1" IsVisible="false"/>
-            <Label x:Name="LeftTime" Text="{Binding Path=LeftMinuetsAndHours,Mode=TwoWay}" FontSize="Large" HorizontalTextAlignment="Center" TextColor="{StaticResource Gray300}" ZIndex="2" IsVisible="true"/>
+            <Label x:Name="Goal" Text="{Binding Path=GoalString}" FontSize="Large" HorizontalTextAlignment="Center" TextColor="{StaticResource Gray300}" ZIndex="1" IsVisible="true"/>
+            <Label x:Name="LeftTime" Text="{Binding Path=LeftMinuetsAndHours}" FontSize="Large" HorizontalTextAlignment="Center" TextColor="{StaticResource Gray300}" ZIndex="2" IsVisible="false"/>
             <Button Opacity="0" x:Name="TextChange" Clicked="TextChange_Clicked" ZIndex="3"/>
         </Grid>
         
