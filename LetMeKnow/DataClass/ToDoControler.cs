@@ -11,12 +11,13 @@ namespace LetMeKnow.TodoClass
 {
     public class ToDoControler
     {
-        public delegate void ToDoControlerEventHandler(object sender, EventArgs e);
+        public delegate void ToDoControlerEventHandler(ToDo Todo);
         public event ToDoControlerEventHandler ControlerEvent;
 
 
         System.Timers.Timer Timer;
         List<ToDo> _ToDos = new List<ToDo>();
+        ToDo ToDoNow { get; set; }
 
         public List<ToDo> ToDos {get{return _ToDos;}}
 
@@ -28,9 +29,9 @@ namespace LetMeKnow.TodoClass
             shell.Unloaded += (object sender, EventArgs e) => {Timer.Stop(); Timer.Dispose(); };
         }
 
-        void ExecuteDelegate(object sender, EventArgs e) {if (ControlerEvent != null) { ControlerEvent(sender, e);} }
+        void ExecuteDelegate(object sender, EventArgs e) {ControlerEvent?.Invoke(ToDoNow); }
 
-        public ToDo GetTodo(){ return ToDos.FirstOrDefault(x => !x.isDone)?? new ToDo(DateTime.Now, DateTime.Now.AddSeconds(2), "Nothing For Now"); }
+        public ToDo GetTodo(){ var todo= ToDos.FirstOrDefault(x => !x.isDone)?? new ToDo(DateTime.Now, DateTime.Now, "Nothing For Now");ToDoNow=todo; return todo; }
 
         public void AddToDo(ToDo toDo)
         {

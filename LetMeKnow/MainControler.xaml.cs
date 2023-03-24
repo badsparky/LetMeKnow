@@ -9,6 +9,10 @@ public partial class MainControler : ContentPage
     public static ControlerModel Model;
     ToDoControler ToDos;
 
+    System.Timers.Timer WatchTimer;
+
+    public delegate void WatcherEventHandler(ToDo toDo);
+    public event WatcherEventHandler WatcherEvent;
 
     public MainControler(ToDoControler ToDos, Shell shell)
     {
@@ -19,11 +23,20 @@ public partial class MainControler : ContentPage
         BindingContext = Model;
         InitializeComponent();
         ToDos.ControlerEvent += RenderGraphics;
-        Model.ToDoChnaged += ChnageTexts;
+        ToDos.ControlerEvent += ChangeTexts;
+        Model.ToDoChnaged += ChangeTexts;
+        //WatchTimer = new System.Timers.Timer(1000);
+        //WatchTimer.Elapsed += (sender,e) => { invoke };
+        //WatchTimer.Start();
+        //shell.Unloaded += (sender, e) => { WatchTimer.Stop(); WatchTimer.Dispose(); };
     }
 
-    void RenderGraphics(object sender,EventArgs e){ if (GraphicsView.IsEnabled) GraphicsView.Invalidate(); }
-    void ChnageTexts(ToDo toDo) { Goal.Text = toDo.Thing; }
+    void RenderGraphics(ToDo Todo) { if (GraphicsView.IsEnabled) GraphicsView.Invalidate(); }
+    void ChangeTexts(ToDo toDo) { Goal.Text = DateTime.Now.ToString(); ; /*LeftTime.Text = toDo.LeftMinuetsAndHours;*/ }
 
+    private void  TextChange_Clicked(object sender, EventArgs e)
+    {
+        (LeftTime.IsVisible, Goal.IsVisible) = (Goal.IsVisible, LeftTime.IsVisible);
+    }
 }
 

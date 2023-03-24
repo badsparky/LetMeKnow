@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LetMeKnow.TodoClass
 {
-    public class ToDo :IComparable<ToDo>
+    public class ToDo 
     {
         public DateTime Start ;
         public DateTime End;
@@ -14,12 +14,13 @@ namespace LetMeKnow.TodoClass
         public double Span { 
             get
             {
-                var tmp = (Start.Subtract(End));
-                var tmp2 = tmp.TotalMilliseconds;
-                return Math.Abs((Start.Subtract(End)).TotalMilliseconds);
+                return Math.Max( Math.Abs((Start.Subtract(End)).TotalMilliseconds),1);
             }
         }
-        public double LeftTime { get { return Math.Max((End - DateTime.Now).TotalMilliseconds, 0); } }
+        public double LeftTimeMillisecond { get { return Math.Max((End - DateTime.Now).TotalMilliseconds, 0); } }
+        double LeftTimeMinutes { get { return LeftTimeMillisecond/1000; } }
+        //public string LeftMinuetsAndHours { get => $"{Math.Floor(LeftTimeMinutes / 60).ToString("00")}h\t{Math.Floor(LeftTimeMinutes % 60).ToString("00")}m\t{Math.Floor(60 * (LeftTimeMinutes % 1)).ToString("00")}s"; }
+        public string LeftMinuetsAndHours { get => $"Checking {DateTime.Now}"; }
         public ToDo(DateTime start, DateTime end, string todo) 
         {
             if(end.Subtract(start).TotalMilliseconds< 0) {  }
@@ -27,15 +28,15 @@ namespace LetMeKnow.TodoClass
         }
         public bool isDone { get { return (End - DateTime.Now).Milliseconds < 0; } }
 
-        int IComparable<ToDo>.CompareTo(ToDo todo)
-        {
-            return Math.Sign((this.Start - todo.Start).Microseconds);
-        }
+        //int IComparable<ToDo>.CompareTo(ToDo todo)
+        //{
+        //    return Math.Sign((this.Start - todo.Start).Microseconds);
+        //}
 
         public class Viewing
         {
             ToDo ToDo;
-            public string Start2End { get { return $"{ToDo.Start.ToString("HH:mm")} - {ToDo.End.ToString($"HH:mm")}\t({(ToDo.End-ToDo.Start).TotalMilliseconds})\t"; } }
+            public string Start2End { get { return $"{ToDo.Start.ToString("HH:mm")} - {ToDo.End.ToString($"HH:mm")}\t({ToDo.LeftMinuetsAndHours})\t"; } }
             public string Goal { get { return "\t"+ToDo.Thing; } }
             public Viewing(ToDo toDo) { this.ToDo = toDo; }
         }

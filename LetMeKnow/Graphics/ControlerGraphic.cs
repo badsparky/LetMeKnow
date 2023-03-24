@@ -9,7 +9,7 @@ namespace LetMeKnow.Graphics
         ControlerModel ControlerModel;
         ToDoControler ToDos;
         ToDo ToDo;
-        double Procedure { get { return Math.Min(1, ToDo.LeftTime / ToDo.Span); } }
+        double Procedure { get { return Math.Min(1, ToDo.LeftTimeMillisecond / ToDo.Span); } }
         public delegate void ToDoExpireHAndler(ToDo todo);
         public event ToDoExpireHAndler ToDoExpired; 
         public delegate void ToDoChangedHAndler(ToDo todo);

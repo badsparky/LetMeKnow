@@ -7,17 +7,19 @@ namespace LetMeKnow.Models
 {
     public class ControlerModel:Base
     {
-        public string StartTime { get=> ToDo.Start.ToString("HH:mm");  }
-        public string EndTime { get =>ToDo.End.ToString("HH:mm");  }
         public string GoalString { get => ToDo.Thing; }
         public GraphicsDrawable GraphicsDrawable { get; private set; }
-        public double Span { get => ToDo.Span;  }
-        public double LeftTime { get => ToDo.LeftTime; }
         public double Height { get => 500; }
         public double Width { get => 500; }
+        public  string LeftMinuetsAndHours { get => ToDo.LeftMinuetsAndHours; }
+        public ToDo CurrentToDo { get => ToDo; }
+        double LeftTime { get => ToDo.LeftTimeMillisecond; }
+        double Span { get => ToDo.Span;  }
+        
 
         public delegate void ToDoChnagedHandler(ToDo todo);
         public event ToDoChnagedHandler ToDoChnaged;
+
 
         ToDoControler ToDos;
         Shell Shell;
@@ -33,6 +35,8 @@ namespace LetMeKnow.Models
         }
 
         void SetToDo(ToDo toDo){ToDo=toDo; ToDoChnaged?.Invoke(this.ToDo); }
+
+
 
         public double GetProgress()
         {
