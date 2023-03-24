@@ -32,7 +32,7 @@ public partial class MainControler : ContentPage
     }
 
     void RenderGraphics(ToDo Todo) { if (GraphicsView.IsEnabled) GraphicsView.Invalidate(); }
-    void ChangeTexts(ToDo toDo) { Goal.Text = DateTime.Now.ToString(); ; /*LeftTime.Text = toDo.LeftMinuetsAndHours;*/ }
+    void ChangeTexts(ToDo toDo) {  Goal.Text = toDo.Thing; LeftTime.Text = toDo.LeftMinuetsAndHours; }
 
     private void  TextChange_Clicked(object sender, EventArgs e)
     {

@@ -12,6 +12,7 @@ namespace LetMeKnow.Models
         public double Height { get => 500; }
         public double Width { get => 500; }
         public  string LeftMinuetsAndHours { get => ToDo.LeftMinuetsAndHours; }
+
         public ToDo CurrentToDo { get => ToDo; }
         double LeftTime { get => ToDo.LeftTimeMillisecond; }
         double Span { get => ToDo.Span;  }

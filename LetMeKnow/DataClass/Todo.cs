@@ -10,7 +10,7 @@ namespace LetMeKnow.TodoClass
     {
         public DateTime Start ;
         public DateTime End;
-        public string Thing;
+        public string Thing ;
         public double Span { 
             get
             {
