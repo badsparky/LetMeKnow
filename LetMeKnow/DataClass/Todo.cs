@@ -18,8 +18,7 @@ namespace LetMeKnow.TodoClass
             }
         }
         public double LeftTimeMillisecond { get { return Math.Max((End - DateTime.Now).TotalMilliseconds, 0); } }
-        double LeftTimeMinutes { get { return LeftTimeMillisecond/1000/60
-                    ; } }
+        double LeftTimeMinutes { get { return LeftTimeMillisecond/1000/60; } }
         public string LeftMinuetsAndHours { get => $"{Math.Floor(LeftTimeMinutes / 60):00}h{Math.Floor(LeftTimeMinutes % 60):00}m{Math.Floor(60 * (LeftTimeMinutes % 1)):00}s"; }
         public ToDo(DateTime start, DateTime end, string todo) 
         {

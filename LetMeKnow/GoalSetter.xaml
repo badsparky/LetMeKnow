@@ -9,11 +9,11 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-            <ListView ItemsSource="{Binding Goals}" HasUnevenRows="True" HorizontalOptions="Center" HeightRequest="300">
+            <ListView ItemsSource="{Binding Goals}" HasUnevenRows="True" HorizontalOptions="Center" HeightRequest="300" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid>
+                            <Grid BackgroundColor="{StaticResource Gray300}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"/>
                                     <ColumnDefinition Width="1*"/>
@@ -23,13 +23,15 @@
                                        SemanticProperties.HeadingLevel="Level1"
                                        HorizontalTextAlignment="End"
                                        Grid.Column="0"
-                                       FontSize="Body"/>
+                                       FontSize="Body"
+                                       TextColor="White"/>
                                 
                                 <Label Text="{Binding Goal}"
                                        SemanticProperties.HeadingLevel="Level1"
                                        HorizontalTextAlignment="Start"
                                        Grid.Column="1"
-                                       FontSize="Body"/>
+                                       FontSize="Body"
+                                       TextColor="White"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
